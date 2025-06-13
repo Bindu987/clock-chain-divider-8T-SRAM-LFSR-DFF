@@ -155,7 +155,6 @@ Performed full backend layout for the 8T SRAM-based divider:
 ## 🙌 Authors
 
 - **Bindu Sree Chandu**  
-- **Govardhana Kondapaturi**  
 *California State University, Fresno*
 
 ---
@@ -163,3 +162,10 @@ Performed full backend layout for the 8T SRAM-based divider:
 ## 📜 License
 
 This project is licensed under the [MIT License](LICENSE).
+
+
+## 📜 Disclaimer
+
+The work presented here is intended solely for academic and educational purposes. It demonstrates concepts in RTL design, low-power architecture implementation, functional simulation, synthesis, and physical design using industry-standard tools such as ModelSim, Synopsys Design Compiler, and Cadence Innovus.
+
+All content, including Verilog source code, simulation outputs, and design reports, is provided for learning, research, and portfolio use only. This repository is not intended for commercial applications.
