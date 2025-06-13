@@ -83,14 +83,6 @@ Each design was simulated using ModelSim with custom testbenches that verified:
 ---
 
 ## 📊 Synthesis Results (Synopsys DC)
-
-| Metric                | DFF       | Gated LFSR | 8T SRAM    |
-|----------------------|-----------|------------|------------|
-| Total Cell Area (µm²)| 57.99     | 59.58      | 102.94     |
-| Total Power (µW)     | 26.38     | 27.86      | **21.57**  |
-| Dynamic Power (µW)   | 20.63     | 24.27      | **15.41**  |
-| Worst Slack (ns)     | 3.44      | 3.44       | 3.38       |
-
 ✅ **SRAM-based divider** selected for physical design due to lowest power and acceptable area/timing.
 
 ---
