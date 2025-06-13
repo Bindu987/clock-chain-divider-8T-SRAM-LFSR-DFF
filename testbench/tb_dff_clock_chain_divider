@@ -1,0 +1,40 @@
+`timescale 1ns / 1ps
+
+module tb_dff_clock_chain_divider;
+
+    reg clk, rst;
+    wire [7:0] out;
+    reg [7:0] prev_out;
+
+    dff_clock_chain_divider uut (
+        .clk(clk),
+        .rst(rst),
+        .out(out)
+    );
+
+    initial clk = 0;
+    always #5 clk = ~clk;
+
+    initial begin
+        $dumpfile("dff_divider.vcd");
+        $dumpvars(0, tb_dff_clock_chain_divider);
+
+        rst = 1;
+        prev_out = 0;
+        #10 rst = 0;
+
+        #200 $finish;
+    end
+
+    always @(posedge clk) begin
+        if (rst)
+            $display("%0t ns | RESET     | out = %b", $time, out);
+        else if (out != prev_out)
+            $display("%0t ns | UPDATED   | out = %b", $time, out);
+        else
+            $display("%0t ns | HOLDING   | out = %b", $time, out);
+
+        prev_out <= out;
+    end
+
+endmodule
