@@ -1,1 +1,27 @@
+module gated_lfsr_clock_divider (
+    input clk,
+    input rst,
+    input en_clk,
+    input en_pwr,
+    input test_mode,
+    output [7:0] out
+);
 
+    reg [7:0] lfsr;
+    wire gated_clk;
+    wire feedback;
+
+    assign out = lfsr;
+    assign gated_clk = (test_mode || en_clk) ? clk : 1'b0;
+    assign feedback = lfsr[7] ^ lfsr[5];  // Example: taps at bits 8 and 6
+
+    always @(posedge gated_clk or posedge rst) begin
+        if (rst)
+            lfsr <= 8'b00000001;  // Avoid all-0 state
+        else if (en_pwr || test_mode)
+            lfsr <= {lfsr[6:0], feedback};
+        else
+            lfsr <= lfsr;  // Hold state (power gated)
+    end
+
+endmodule
